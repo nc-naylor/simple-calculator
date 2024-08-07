@@ -1,0 +1,32 @@
+:root {
+    --black: #000000;
+    --darkGrey: #323232;
+    --green: #2ecc71;
+    --red: #e74c3c;
+}
+
+#calculator #clear {
+    color: var(--red);
+}
+
+#calculator .operator {
+    color: var(--green);
+}
+
+#calculator .btn {
+    background-color: var(--darkGrey);
+    border: none;
+    width: 100px; 
+    height: 100px; 
+    padding: 14px 20px;
+    border-radius: 50%; 
+    font-size: 3vh; 
+    text-align: center; 
+}
+
+.container {
+    background-color: var(--black);
+    border: 5px solid var(--black);
+    border-radius: 15px;
+    width: 40%;
+}
