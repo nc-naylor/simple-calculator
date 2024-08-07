@@ -10,72 +10,72 @@
 <body>
     <div id="calculator" class="container mt-3">
         <!-- Display -->
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col">
-                    <input class="w-100" id="display" readonly>
+                    <input id="display" readonly>
                 </div>
             </div>
         <!-- Buttons -->
         <div class="mt-3" id="keys">
                 <div class="row p-1">
                     <div class="col-3">
-                        <button class="btn btn-dark w-100" id="clear" onclick="clearDisplay()">C</button>
+                        <button class="btn btn-dark" id="clear" onclick="clearDisplay()">C</button>
                     </div>
                     <div class="col-3 offset-6">
-                        <button class="operator btn btn-dark w-100" onclick="appendToDisplay()">÷</button>
+                        <button class="operator btn btn-dark" onclick="appendToDisplay()">÷</button>
                     </div>
             </div>
             <div class="row p-1">
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">7</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">7</button>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">8</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">8</button>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">9</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">9</button>
                 </div>
                 <div class="col-3">
-                    <button class="operator btn btn-dark w-100" onclick="appendToDisplay()">x</button>
-                </div>
-            </div>
-            <div class="row p-1">
-                <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">4</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">5</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">6</button>
-                </div>
-                <div class="col-3">
-                    <button class="operator btn btn-dark w-100" onclick="appendToDisplay()">-</button>
+                    <button class="operator btn btn-dark" onclick="appendToDisplay()">x</button>
                 </div>
             </div>
             <div class="row p-1">
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">1</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">4</button>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">2</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">5</button>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">3</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">6</button>
                 </div>
                 <div class="col-3">
-                    <button class="operator btn btn-dark w-100" onclick="appendToDisplay()">+</button>
+                    <button class="operator btn btn-dark" onclick="appendToDisplay()">-</button>
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="col-3">
+                    <button class="btn btn-dark" onclick="appendToDisplay()">1</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-dark" onclick="appendToDisplay()">2</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-dark" onclick="appendToDisplay()">3</button>
+                </div>
+                <div class="col-3">
+                    <button class="operator btn btn-dark" onclick="appendToDisplay()">+</button>
                 </div>
             </div>
             <div class="row p-1">
                 <div class="col-3 offset-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">0</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">0</button>
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-dark w-100" onclick="appendToDisplay()">.</button>
+                    <button class="btn btn-dark" onclick="appendToDisplay()">.</button>
                 </div>
                 <div class="col-3">
-                    <button class="operator btn btn-dark w-100" id="equal" onclick="calculate()">=</button>
+                    <button class="operator btn btn-dark" id="equal" onclick="calculate()">=</button>
                 </div>
             </div>
         </div>
