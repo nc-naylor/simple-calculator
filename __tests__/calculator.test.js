@@ -1,9 +1,9 @@
-const {
+import {
   operatorPrecedence,
   tokenize,
   infixToPostfix,
   evaluatePostfix,
-} = require("../calculator");
+} from "../calculator.js";
 
 describe("operatorPrecedence", () => {
   test("should have correct precedence for addition", () => {
@@ -32,5 +32,49 @@ describe("operatorPrecedence", () => {
 
   test("should not have precedence for undefined operators", () => {
     expect(operatorPrecedence["^"]).toBeUndefined();
+  });
+});
+
+describe("tokenize", () => {
+  test("tokenizes a simple expression", () => {
+    expect(tokenize("2 + 3 * 4")).toEqual(["2", "+", "3", "*", "4"]);
+  });
+
+  test("tokenizes a single number", () => {
+    expect(tokenize("23")).toEqual(["23"]);
+  });
+
+  test("tokenizes an expression with different operators", () => {
+    expect(tokenize("1 + 2 - 3 * 4 / 5")).toEqual([
+      "1",
+      "+",
+      "2",
+      "-",
+      "3",
+      "*",
+      "4",
+      "/",
+      "5",
+    ]);
+  });
+
+  test("tokenizes an empty string", () => {
+    expect(tokenize("")).toEqual(null);
+  });
+
+  test("tokenizes large numbers", () => {
+    expect(tokenize("1234567890 + 9876543210")).toEqual([
+      "1234567890",
+      "+",
+      "9876543210",
+    ]);
+  });
+
+  test("tokenizes consecutive operators", () => {
+    expect(tokenize("2 ++ 3")).toEqual(["2", "+", "+", "3"]);
+  });
+
+  test("tokenizes float numbers", () => {
+    expect(tokenize("1.23 + 4.56")).toEqual(["1.23", "+", "4.56"]);
   });
 });
