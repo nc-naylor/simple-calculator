@@ -65,7 +65,7 @@ body {
     background-color: var(--light-green);
 }
 
-#calculator .operator {
+#calculator .operator-btn {
     color: var(--green);
 }
 

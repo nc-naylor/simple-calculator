@@ -1,4 +1,4 @@
-const operatorPrecedence = {
+export const operatorPrecedence = {
   "+": 1,
   "-": 1,
   "*": 2,
@@ -7,16 +7,16 @@ const operatorPrecedence = {
   "÷": 2,
 };
 
-function tokenize(expression) {
+export function tokenize(expression) {
   // \d+ : match one or more digits (0-9)
   // | : logical OR
   // [+\-*/] : match any allowed operator
   // g : global, find all matches
-  return expression.match(/\d+|[+\-*/x÷]/g);
+  return expression.match(/\d+(\.\d+)?|[+\-*/x÷]/g);
 }
 
 // Converts infix array of tokens ['2', '+', '3', '*', '4'] to postfix ([2, 3, 4, '*', '+'])
-function infixToPostfix(tokens) {
+export function infixToPostfix(tokens) {
   const output = [];
   const operators = [];
 
@@ -42,12 +42,12 @@ function infixToPostfix(tokens) {
   return output;
 }
 
-function evaluatePostfix(postfix) {
+export function evaluatePostfix(postfix) {
   const stack = [];
 
   postfix.forEach((token) => {
-    if (typeof token === "number") {
-      stack.push(token);
+    if (!isNaN(token)) {
+      stack.push(parseFloat(token));
     } else {
       const b = stack.pop();
       const a = stack.pop();
@@ -71,10 +71,3 @@ function evaluatePostfix(postfix) {
   });
   return stack[0];
 }
-
-module.exports = {
-  operatorPrecedence,
-  tokenize,
-  infixToPostfix,
-  evaluatePostfix,
-};
