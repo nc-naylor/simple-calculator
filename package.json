@@ -1,0 +1,14 @@
+{
+  "name": "simple-calculator",
+  "version": "1.0.0",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
