@@ -1,26 +1,24 @@
-import { tokenize, infixToPostfix, evaluatePostfix } from "./calculator.js";
+import {
+  tokenize,
+  infixToPostfix,
+  evaluatePostfix,
+  handleDecimalPoint,
+  handleOperator,
+  isOperator,
+  isDecimal,
+} from "./calculator.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const display = document.getElementById("display");
 
   function appendToDisplay(input) {
-    if (input === ".") {
-      let currentValue = display.value;
-      display.value = handleDecimalPoint(currentValue, input);
+    if (isDecimal(input)) {
+      display.value = handleDecimalPoint(display.value);
+    } else if (isOperator(input)) {
+      display.value = handleOperator(display.value, input);
     } else {
       display.value += input;
     }
-  }
-
-  function handleDecimalPoint(displayValue, input) {
-    const lastChar = displayValue.slice(-1);
-    const lastOperand = displayValue.split(/[\+\-\*x\/÷]/).pop();
-    const containsDecimal = lastOperand.includes(".");
-
-    if (containsDecimal || lastChar === "." || !lastOperand) {
-      return displayValue;
-    }
-    return displayValue + ".";
   }
 
   function clearDisplay() {

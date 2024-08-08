@@ -8,9 +8,9 @@ export const operatorPrecedence = {
 };
 
 export function tokenize(expression) {
-  // \d+ : match one or more digits (0-9)
+  // \d+(\.\d+)? : matches integers and floats
   // | : logical OR
-  // [+\-*/] : match any allowed operator
+  // [+\-*/x÷] : match any allowed operator
   // g : global, find all matches
   return expression.match(/\d+(\.\d+)?|[+\-*/x÷]/g);
 }
@@ -70,4 +70,33 @@ export function evaluatePostfix(postfix) {
     }
   });
   return stack[0];
+}
+
+export function handleDecimalPoint(displayValue) {
+  const lastChar = displayValue.slice(-1);
+  const lastOperand = displayValue.split(/[\+\-\*x\/÷]/).pop();
+  const containsDecimal = lastOperand.includes(".");
+
+  if (containsDecimal || lastChar === "." || !lastOperand) {
+    return displayValue;
+  }
+  return displayValue + ".";
+}
+
+export function handleOperator(displayValue, input) {
+  const lastChar = displayValue.slice(-1);
+
+  if (isOperator(lastChar)) {
+    return displayValue.slice(0, -1) + input;
+  }
+
+  return displayValue + input;
+}
+
+export function isOperator(input) {
+  return ["+", "-", "*", "x", "/", "÷"].includes(input);
+}
+
+export function isDecimal(input) {
+  return input === ".";
 }
