@@ -4,6 +4,9 @@ import {
   infixToPostfix,
   evaluatePostfix,
   handleDecimalPoint,
+  handleOperator,
+  isOperator,
+  isDecimal,
 } from "../calculator.js";
 
 describe("operatorPrecedence", () => {
@@ -216,5 +219,57 @@ describe("handleDecimalPoint", () => {
   test("returns the display value unchanged if it ends with an operator followed by a decimal point", () => {
     expect(handleDecimalPoint("5+")).toBe("5+0.");
     expect(handleDecimalPoint("5+0.")).toBe("5+0.");
+  });
+});
+
+describe("handleOperator", () => {
+  test("replaces the last operator with a new operators", () => {
+    expect(handleOperator("5+", "-")).toBe("5-");
+    expect(handleOperator("5+", "+")).toBe("5+");
+  });
+
+  test("appends an operator when there is no existing operator at the end", () => {
+    expect(handleOperator("2", "-")).toBe("2-");
+  });
+
+  test("does not append an operator if the display value is empty", () => {
+    expect(handleOperator("", "/")).toBe("");
+  });
+});
+
+describe("isOperator", () => {
+  test("returns true for all valid operators", () => {
+    expect(isOperator("+")).toBe(true);
+    expect(isOperator("-")).toBe(true);
+    expect(isOperator("*")).toBe(true);
+    expect(isOperator("/")).toBe(true);
+    expect(isOperator("x")).toBe(true);
+    expect(isOperator("÷")).toBe(true);
+  });
+
+  test("returns false for invalid operators", () => {
+    expect(isOperator("a")).toBe(false);
+    expect(isOperator("1")).toBe(false);
+    expect(isOperator("^")).toBe(false);
+    expect(isOperator(".")).toBe(false);
+    expect(isOperator(" ")).toBe(false);
+    expect(isOperator("")).toBe(false);
+  });
+});
+
+describe("isDecimal", () => {
+  test("returns true for a decimal point", () => {
+    expect(isDecimal(".")).toBe(true);
+  });
+
+  test("returns false for non-decimal points", () => {
+    expect(isDecimal("+")).toBe(false);
+    expect(isDecimal("-")).toBe(false);
+    expect(isDecimal("*")).toBe(false);
+    expect(isDecimal("/")).toBe(false);
+    expect(isDecimal("x")).toBe(false);
+    expect(isDecimal("÷")).toBe(false);
+    expect(isDecimal("1")).toBe(false);
+    expect(isDecimal("")).toBe(false);
   });
 });

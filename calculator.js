@@ -90,6 +90,10 @@ export function handleDecimalPoint(displayValue) {
 export function handleOperator(displayValue, input) {
   const lastChar = displayValue.slice(-1);
 
+  if (displayValue === "") {
+    return displayValue;
+  }
+
   if (isOperator(lastChar)) {
     return displayValue.slice(0, -1) + input;
   }
