@@ -77,7 +77,7 @@ export function handleDecimalPoint(displayValue) {
   const lastOperand = displayValue.split(/[\+\-\*x\/÷]/).pop();
   const containsDecimal = lastOperand.includes(".");
 
-  if (isOperator(lastChar)) {
+  if ((displayValue === "") | isOperator(lastChar)) {
     return displayValue + "0.";
   }
 

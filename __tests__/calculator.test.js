@@ -190,5 +190,31 @@ describe("handleDecimalPoint", () => {
 
   test("appends a decimal point after an operator", () => {
     expect(handleDecimalPoint("123+")).toBe("123+0.");
+    expect(handleDecimalPoint("123-")).toBe("123-0.");
+  });
+
+  test("appends a decimal point after multiple operators", () => {
+    expect(handleDecimalPoint("123+45*")).toBe("123+45*0.");
+  });
+
+  test("returns the display value unchanged if it already ends with a decimal point", () => {
+    expect(handleDecimalPoint("123.")).toBe("123.");
+  });
+
+  test("appends a decimal point to the last number after various operators", () => {
+    expect(handleDecimalPoint("12+34-56*78/90")).toBe("12+34-56*78/90.");
+  });
+
+  test("appends a decimal point to a single-digit number", () => {
+    expect(handleDecimalPoint("5")).toBe("5.");
+  });
+
+  test("appends a decimal point to empty display value", () => {
+    expect(handleDecimalPoint("")).toBe("0.");
+  });
+
+  test("returns the display value unchanged if it ends with an operator followed by a decimal point", () => {
+    expect(handleDecimalPoint("5+")).toBe("5+0.");
+    expect(handleDecimalPoint("5+0.")).toBe("5+0.");
   });
 });
