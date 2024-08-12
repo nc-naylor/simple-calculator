@@ -3,7 +3,9 @@
 
 A web-based calculator built with HTML, CSS, JavaScript, and Bootstrap 5. This calculator supports basic arithmetic operations and handles decimal points. It's designed to be simple, yet functional for everyday calculations.
 
+## Live Demo
 
+Check out the live version of the Simple Calculator here: [Simple Calculator](https://nc-naylor-simple-calculator.netlify.app)
 
 ## Features
 
